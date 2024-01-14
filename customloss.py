@@ -64,8 +64,21 @@ class CustomLoss(nn.Module):
         
         return bce_loss
     
+    
+    def forward_dice(self, logits, labels):
+        p = torch.sigmoid(logits)
+        smooth = 1.0
+        intersection = (p * labels).sum(0)
+        total = (p**2 + labels**2).sum(0)
+        dice_loss = 1 - (intersection + smooth)/(total + smooth)
+        
+        return dice_loss.mean()
+    
+    
     def forward(self, logits, labels):
         if self.loss_fn == 'bce':
             return self.forward_bce(logits, labels)
         elif self.loss_fn == 'focal':
             return self.forward_focal(logits, labels)
+        elif self.loss_fn == 'dice':
+            return self.forward_dice(logits, labels)
