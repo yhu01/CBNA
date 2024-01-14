@@ -81,7 +81,7 @@ def parse_args():
     parser.add_argument('--weight_decay'          , default=5e-2, type=float, help='weight decay')
     parser.add_argument('--batch_size', default=128, type=int, help='Per-GPU batch-size : number of distinct images loaded on one GPU.')
     parser.add_argument('--val_batch_size'  , default=128, type=int, help='batch size for validation')
-    parser.add_argument('--loss_fn'     , default='focal', help='bce/focal')
+    parser.add_argument('--loss_fn'     , default='focal', help='bce/focal/dice')
     parser.add_argument('--weighted'    , type=utils.bool_flag, default=True)
     parser.add_argument('--drop_path'   , type=float, default=0.05)
     parser.add_argument('--src', action='store_true') #simple random crop
@@ -90,7 +90,7 @@ def parse_args():
     parser.add_argument('--num_workers', default=8, type=int, help='Number of data loading workers per GPU.')
     
     parser.add_argument('--thres_method'   , default='global', help='global/adaptive')
-    parser.add_argument('--threshold'      , default=0.45, type=float, help='compute TSS, 0.45 for CNN & Fusion, 0.5 for MLP')
+    parser.add_argument('--threshold'      , default=0.5, type=float, help='compute TSS, 0.45 for CNN & Fusion, 0.5 for MLP')
 
     return parser.parse_args()
 
@@ -312,7 +312,7 @@ def train_one_epoch(model, train_loader, criterion, optimizer, epoch, fp16_scale
 
 if __name__ == '__main__':
     args = parse_args()
-    output_dir = Path(args.output_dir).joinpath('{}/{}/'.format(args.data_set, args.model_type))
+    output_dir = Path(args.output_dir).joinpath('{}/{}/{}/'.format(args.data_set, args.model_type, args.loss_fn))
     args.output_dir = output_dir
     if not os.path.isdir(args.output_dir):
         try:
