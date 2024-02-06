@@ -11,6 +11,11 @@
 pip install -r requirements.txt
 ```
 
+> 📋 To set up for the data:
+- Download the datafile folder with this [link](https://drive.google.com/drive/folders/12SxquCwWwapfGeJEBHoB4qD1s7WQL3-R?usp=sharing).
+- Download the filelist folder with this [link](https://drive.google.com/drive/folders/19vuAQpggCB5DIPB9RKW-HT-SL5y2_daE?usp=sharing).
+- Download the Data folder with this [link](https://drive.google.com/drive/folders/16F0CdTKMjNyCPX-q6G69TpwSrO4YAjMX?usp=sharing).
+
 ## CBNA data 
 
 > 📋 The IRC images (or patches) are stored in 'Data/irc_patches/' directory, some examples are shown as follows:
@@ -69,8 +74,7 @@ torchrun --nproc_per_node=2 train_cbna.py --model_type ViT --ThreeAugment True -
 torchrun --nproc_per_node=1 train_cbna.py --model_type MLP/CNN/Fusion/ViT --eval --threshold 0.5/0.45
 ```
 
-> 🔍 The trained parameters for each model are stored in that model's corresponding directory (e.g. 'checkpoints/CBNA/CNN/best.pth'). In addition, per-species performances are reported for each model when launching the above evaluation code, they are also stored in the same model directory ('checkpoints/CBNA/CNN/CNN_tss_per_cls.csv')
-
+> 🔍 The trained parameters for each model are stored in that model's corresponding directory (e.g. 'checkpoints/CBNA/CNN/best.pth'). In addition, per-species performances are reported for each model when launching the above evaluation code, they are also stored in the same model directory ('checkpoints/CBNA/CNN/CNN_tss_per_cls.csv'). All model related files can be downloaded from [here](https://drive.google.com/drive/folders/1M91LLtripPZqQ64TyC9ccQKi7_LBWnCG?usp=sharing).
 
 
 ## Performance
