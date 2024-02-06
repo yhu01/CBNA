@@ -40,7 +40,7 @@ pip install -r requirements.txt
 > 📋 This step shows how to obtain IRC images, as well as the train/val/test splits from scratch with 'export_cbna_20220414.csv' stored in 'filelist/': 
 ```preparation steps
 1. Run preprocess_csv.ipynb until the obtaining of cbna_norepeat.csv file
-2. Run extract_irc_patches.py using the command: python extract_irc_patches
+2. Run extract_irc_patches.py using the command: python extract_irc_patches.py
 3. Continue with preprocess_csv.ipynb till the end to obtain cbna_filtered.csv file
 4. Run process_csv.ipynb till the end to obtain cbna_final_w_covariates.csv file
 5. Run generate_train_val_test.ipynb till the end to obtain train/val/test split files
